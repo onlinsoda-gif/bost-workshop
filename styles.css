@@ -1,0 +1,432 @@
+:root{--orange:#f28a13;--navy:#12345b;--ink:#192534;--bg:#f5f7fa;--white:#fff;--muted:#697586}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif}.topbar{background:white;padding:12px clamp(12px,4vw,40px);display:flex;align-items:center;justify-content:flex-start;gap:12px;box-shadow:0 2px 10px #15283b0c}.lang{display:flex;gap:4px}.lang select{border:1px solid #d9e0e8;background:#fff7eb;color:#12345b;padding:8px 12px;border-radius:9px;cursor:pointer;font:inherit;font-weight:600;min-width:112px;box-shadow:0 1px 3px #132b4515}.lang select:hover,.lang select:focus{background:#fff7eb;color:#12345b;border-color:#d9e0e8;outline:2px solid #f28a1320}main{max-width:1000px;margin:16px auto;padding:0 14px}.hero{position:relative;border-radius:18px;overflow:hidden;background:#dfe7ef;min-height:120px}.banner{width:100%;height:auto;display:block;max-height:none;object-fit:contain;visibility:visible;opacity:1}.hero-brand{position:absolute;left:5%;top:50%;transform:translateY(-50%);width:40%;text-align:center;color:#17212c;text-shadow:0 1px 0 #fff9}.brand-name{font-weight:900;letter-spacing:.4px;font-size:clamp(18px,4vw,34px);line-height:1.1}.brand-name span{color:var(--orange)}.brand-name strong{color:#101820}.hero-brand h1{font-size:clamp(13px,2.1vw,19px);font-weight:750;margin:10px 0 0;color:#18212b;line-height:1.35}.workshop-address{color:var(--orange)!important;font-weight:800!important;margin-bottom:7px!important}.banner-info{text-align:center;margin:10px 0 14px;padding:12px 10px;background:#fff;border-radius:14px;border:1px solid #e5ebf2;box-shadow:0 2px 8px #193b5b07}.banner-info p{margin:0 0 8px;color:var(--navy);font-weight:650}.date-time{display:flex;justify-content:center;align-items:center;gap:12px;color:#667588;font-size:13px}.clock{font-weight:750;color:var(--orange);font-variant-numeric:tabular-nums}.below-banner{display:flex;gap:10px;justify-content:center;margin:14px 0}.primary,.outline,.small{cursor:pointer;border-radius:11px;padding:11px 18px;font:inherit}.primary{background:var(--orange);border:1px solid var(--orange);color:white;font-weight:700}.outline{background:white;border:1px solid #ccd6e2;color:var(--navy)}.profile-card,.vehicle-summary,.quick-note,.panel{background:white;border-radius:15px;padding:14px;margin:12px 0;box-shadow:0 3px 14px #193b5b0a}.profile-card{display:flex;align-items:center;gap:12px;position:relative}.profile-card img{width:58px;height:58px;border-radius:50%;object-fit:cover;border:2px solid var(--orange)}.profile-card p{margin:3px 0;color:var(--muted);font-size:13px}.vehicle-summary{display:flex;align-items:center;gap:12px}.vehicle-summary .car-icon{font-size:28px}.vehicle-summary div:nth-child(2){flex:1}.vehicle-summary small{display:block;color:var(--muted);margin-top:3px}.small{padding:7px 10px;border:0;background:#f0f4f8}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}.feature{min-height:116px;border:1px solid #e6ebf0;border-radius:15px;background:white;padding:13px;text-align:start;display:flex;flex-direction:column;gap:5px;color:inherit;text-decoration:none;cursor:pointer;box-shadow:0 2px 8px #193b5b07}.feature:hover{border-color:var(--orange);transform:translateY(-1px)}.feature span{font-size:24px}.feature b{color:var(--navy)}.feature small{color:var(--muted);line-height:1.5}.emergency{border-color:#ffddd6;background:#fff9f8}.emergency b{color:#b83820}.panel{display:none}.panel.open{display:block}.panel-head{display:flex;justify-content:space-between;align-items:center}.panel-head h2{margin:0}.close{border:0;background:#f0f3f6;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:20px}.panel-content,.panel form{line-height:1.8}.panel ul{padding-inline-start:22px}.panel input,.panel select,.panel textarea{display:block;width:100%;border:1px solid #d7dfe8;border-radius:10px;padding:10px;margin:5px 0 12px;font:inherit}.panel label{display:block;margin-top:8px}.quick-note{border-right:4px solid var(--orange)}.quick-note p{margin:5px 0 0;color:var(--muted)}footer{text-align:center;padding:24px;color:var(--muted);font-size:12px}.modal{position:fixed;inset:0;background:#10243b80;display:flex;align-items:center;justify-content:center;padding:16px;z-index:5}.modal form{background:white;border-radius:16px;padding:20px;width:min(440px,100%);box-shadow:0 12px 50px #0003}.modal h2{margin-top:0}.modal label{display:block;margin:10px 0}.modal input{width:100%;padding:10px;border:1px solid #d6dfe8;border-radius:10px;margin-top:5px;font:inherit}.actions{display:flex;gap:8px;margin-top:16px}.hidden{display:none!important}[dir=ltr] .quick-note{border-right:0;border-left:4px solid var(--orange)}[dir=ltr] .hero-brand{left:5%;right:auto}[dir=ltr] .feature{text-align:left}@media(min-width:700px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.feature{min-height:132px}}@media(max-width:440px){.hero-brand{width:42%;left:4%}.brand-name{font-size:clamp(14px,4.1vw,20px)}.hero-brand h1{font-size:clamp(11px,3vw,14px);margin-top:7px}.topbar{align-items:flex-start}.lang select{font-size:12px;padding:5px 8px;min-width:90px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Requested compact controls beneath the banner: language left, account menu right */
+.below-banner{justify-content:space-between;align-items:center;direction:ltr;margin:10px 0 14px;gap:8px}
+.below-banner .lang select,.account-menu select{min-width:0;width:auto;max-width:150px;padding:6px 9px;font-size:12px;border:1px solid #d9e0e8;background:#fff7eb;color:#12345b;border-radius:8px;box-shadow:0 1px 3px #132b4515;font:inherit;font-weight:600;cursor:pointer}
+.account-menu{display:flex;justify-content:flex-end}
+.account-menu select{min-width:128px;direction:rtl}
+[dir=ltr] .account-menu select{direction:ltr}
+.brand-name{font-weight:900;letter-spacing:0;font-size:clamp(18px,4vw,34px);line-height:1.1;color:#101820;text-shadow:0 1px 0 #fff9}
+@media(max-width:440px){.below-banner .lang select,.account-menu select{font-size:12px;padding:5px 8px}.account-menu select{min-width:115px}}
+
+/* Targeted requested refinements only */
+.brand-orange{color:#f28a13!important}.brand-black{color:#101820!important}
+.workshop-address{display:block;text-align:center;margin:6px 0 10px!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important}
+.date-time{direction:ltr;justify-content:space-between;width:100%;padding:0 8px}
+.lang select,.account-menu select{appearance:auto;-webkit-appearance:menulist}
+
+/* Screenshot review fixes: compact header, readable banner overlay, calmer address */
+.topbar:empty{display:none}
+.hero-brand{width:43%;max-width:43%;left:4%;right:auto;text-align:center;overflow:visible}
+.brand-name{font-size:clamp(16px,3.3vw,28px);line-height:1.08;white-space:nowrap}
+.hero-brand h1{font-size:clamp(10px,1.75vw,15px);line-height:1.25;margin-top:6px;max-width:100%;white-space:normal;overflow-wrap:anywhere}
+.workshop-address{font-size:clamp(12px,2.3vw,16px)!important;line-height:1.35!important;margin:4px 0 10px!important;padding:0 4px!important;color:var(--navy)!important;font-weight:650!important;max-width:100%;overflow-wrap:anywhere}
+.banner-info{margin-top:8px}
+.date-time{direction:ltr;justify-content:space-between}
+@media(max-width:440px){.hero-brand{width:44%;max-width:44%;left:3%;right:auto}.brand-name{font-size:clamp(15px,4vw,20px)}.hero-brand h1{font-size:clamp(9px,2.8vw,12px);margin-top:4px}.workshop-address{font-size:12px!important;line-height:1.35!important}}
+
+/* Dropdowns styled like the provided mobile screenshot */
+.below-banner{display:flex;justify-content:space-between;align-items:center;margin:14px 0;position:relative;z-index:4}
+.dropdown-wrap{position:relative}
+.dropdown-trigger{border:1px solid #d9c7ae;background:#f5e7d4;color:#754b24;border-radius:13px;padding:10px 15px;font:inherit;font-weight:650;box-shadow:0 2px 5px #3a241510;cursor:pointer;min-height:48px}
+.lang-trigger{min-width:108px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:14px;background:var(--orange);color:#432812;border-color:#da7a08;border-radius:13px;min-height:58px;box-shadow:0 2px 5px #3a241510}
+.menu-trigger{width:58px;height:58px;background:var(--orange);color:#432812;border-color:#da7a08;font-size:26px;display:grid;place-items:center}
+.hamburger{line-height:1}
+.chevron{font-size:15px;opacity:.75}
+.dropdown-pop{position:absolute;top:calc(100% + 8px);background:#f4e5d2;border:1px solid #e2c9ac;border-radius:18px;padding:8px;box-shadow:0 10px 30px #35211125;z-index:20;display:flex;flex-direction:column;gap:2px;min-width:180px;max-width:min(80vw,280px)}
+.dropdown-pop button{border:0;background:transparent;color:#5e452d;text-align:start;font:inherit;padding:14px 16px;border-radius:12px;cursor:pointer;white-space:nowrap}
+.dropdown-pop button:hover,.dropdown-pop button:focus{background:#f9f0e5;outline:none}
+.lang-pop{left:0;min-width:150px}
+.menu-pop{right:0;min-width:230px}
+.dropdown-pop.hidden{display:none!important}
+@media(max-width:440px){.below-banner{margin:12px 0}.lang-trigger{min-width:98px;padding:9px 12px}.menu-trigger{width:56px;height:56px}.menu-pop{min-width:min(230px,80vw)}}
+
+/* Requested alignment: menu and language option labels right-aligned */
+.lang-pop,.menu-pop{direction:rtl;text-align:right}
+.lang-pop button,.menu-pop button{text-align:right}
+
+
+/* Banner text adjustment only */
+.hero-brand{top:44%;width:40%}
+.brand-name{font-size:clamp(22px,4.8vw,38px)}
+.hero-brand h1{font-size:clamp(14px,2.6vw,21px);margin-top:7px}
+@media(max-width:440px){
+  .hero-brand{top:43%;width:42%;left:4%}
+  .brand-name{font-size:clamp(20px,5.2vw,27px)}
+  .hero-brand h1{font-size:clamp(12px,3.5vw,16px);margin-top:5px}
+}
+
+
+/* Final requested placement and lighter appearance for language/menu controls only */
+.below-banner{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  direction:ltr;
+  position:relative;
+  z-index:30;
+  height:0;
+  margin:0;
+  padding:0;
+  pointer-events:none;
+}
+.below-banner .dropdown-wrap{
+  position:absolute;
+  top:5px;
+  pointer-events:auto;
+}
+.below-banner .lang{left:0}
+.below-banner .account-menu{right:0}
+.below-banner .dropdown-trigger{
+  background:#fff1df;
+  color:#80572f;
+  border:1px solid #ead5bd;
+  box-shadow:0 1px 4px #53371a12;
+  border-radius:11px;
+  font-weight:600;
+}
+.below-banner .lang-trigger{
+  min-width:68px;
+  min-height:38px;
+  height:38px;
+  padding:5px 9px;
+  gap:6px;
+  font-size:12px;
+}
+.below-banner .menu-trigger{
+  width:42px;
+  height:38px;
+  min-height:38px;
+  padding:4px;
+  font-size:20px;
+  display:grid;
+  place-items:center;
+}
+.below-banner .dropdown-pop{
+  background:#fff7ed;
+  border-color:#ead8c3;
+  color:#765533;
+  box-shadow:0 8px 22px #53371a18;
+}
+.below-banner .dropdown-pop button{color:#765533}
+.below-banner .dropdown-pop button:hover,
+.below-banner .dropdown-pop button:focus{background:#f8ead9}
+.below-banner .lang-pop{left:0;right:auto;min-width:112px}
+.below-banner .menu-pop{right:0;left:auto;min-width:170px}
+@media(max-width:440px){
+  .below-banner .dropdown-wrap{top:5px}
+  .below-banner .lang-trigger{min-width:66px;width:66px;height:36px;min-height:36px;padding:4px 8px}
+  .below-banner .menu-trigger{width:40px;height:36px;min-height:36px;font-size:19px}
+}
+
+
+/* Latest requested refinements: spacing below controls and slightly deeper control tint */
+.below-banner .dropdown-trigger{
+  background:#f8e7d2;
+  border-color:#e4c9a8;
+}
+.banner-info{
+  margin-top:48px !important;
+}
+
+
+/* Latest requested adjustment: larger, slightly lower workshop address; tighter gap before history box */
+.workshop-address{
+  font-size:clamp(15px,4vw,20px) !important;
+  margin-top:10px !important;
+  margin-bottom:5px !important;
+}
+.banner-info{
+  margin-top:22px !important;
+}
+
+
+/* Requested changes only: shorter workshop address and social icons above vehicle card */
+.workshop-address{
+  font-size:clamp(11px,2.8vw,15px)!important;
+  line-height:1.3!important;
+}
+@media(max-width:440px){
+  .workshop-address{font-size:12px!important;line-height:1.3!important}
+}
+.social-links{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:12px;
+  direction:ltr;
+  margin:12px 4px 10px;
+  min-height:34px;
+}
+.social-icon{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  box-shadow:0 2px 6px #172b3a12;
+}
+.social-icon svg{width:19px;height:19px;fill:#fff}
+.social-icon.facebook{background:#1877f2}
+.social-icon.youtube{background:#ff0033}
+.social-icon.whatsapp{background:#25d366}
+
+/* Final requested adjustments: centered social icons and compact language control */
+.social-links{
+  justify-content:center!important;
+  direction:rtl!important;
+}
+.below-banner .lang-trigger{
+  min-width:0!important;
+  width:auto!important;
+  padding:5px 8px!important;
+  font-size:12px!important;
+  min-height:34px!important;
+}
+
+
+/* Fix: keep language and menu controls in the page flow, never floating over dialogs */
+.below-banner{
+  display:flex!important;
+  justify-content:space-between!important;
+  align-items:center!important;
+  direction:ltr!important;
+  position:relative!important;
+  z-index:1!important;
+  height:auto!important;
+  min-height:38px!important;
+  margin:10px 0 14px!important;
+  padding:0!important;
+  pointer-events:auto!important;
+}
+.below-banner .dropdown-wrap{
+  position:relative!important;
+  top:auto!important;
+  left:auto!important;
+  right:auto!important;
+  pointer-events:auto!important;
+}
+.below-banner .lang{left:auto!important}
+.below-banner .account-menu{right:auto!important}
+
+
+/* Place social icons in the control row between language and menu */
+.below-banner{
+  display:flex!important;
+  justify-content:space-between!important;
+  align-items:center!important;
+  gap:6px!important;
+}
+.below-banner .social-links{
+  position:relative!important;
+  display:flex!important;
+  flex:1 1 auto!important;
+  justify-content:center!important;
+  align-items:center!important;
+  gap:8px!important;
+  direction:rtl!important;
+  margin:0!important;
+  min-height:36px!important;
+  padding:0!important;
+}
+.below-banner .social-icon{
+  width:32px!important;
+  height:32px!important;
+  flex:0 0 32px!important;
+}
+.below-banner .social-icon svg{width:18px!important;height:18px!important}
+
+
+/* First-visit registration and returning-user login gate */
+.auth-gate{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;overflow-y:auto;padding:18px 12px;background:linear-gradient(145deg,#fff7ed,#f2f5f9 55%,#e8eef5);font-family:Tahoma,Arial,sans-serif}
+.auth-card{width:min(100%,440px);background:#fff;border:1px solid #e7eaf0;border-radius:22px;padding:23px 20px;box-shadow:0 16px 48px #18324d1c;text-align:right;color:#192534;margin:auto}
+.auth-logo{text-align:center;color:#172b43;font-weight:900;font-size:20px;letter-spacing:.5px;margin-bottom:8px}.auth-logo span{color:#f28a13;font-size:12px}
+.auth-avatar{width:68px;height:68px;border-radius:50%;margin:10px auto;background:#fff1df;border:2px solid #f2c48f;display:grid;place-items:center;font-size:30px;overflow:hidden}
+.auth-avatar img,.auth-photo-preview img{width:100%;height:100%;object-fit:cover}
+.auth-card h1{text-align:center;color:#12345b;font-size:23px;margin:8px 0}
+.auth-intro{text-align:center;color:#697586;font-size:13px;line-height:1.8;margin:0 0 16px}
+.auth-form label{display:block;font-size:13px;font-weight:700;color:#31445a;margin:12px 0}
+.auth-form input{display:block;width:100%;margin-top:6px;padding:12px;border:1px solid #d7dfe8;border-radius:11px;background:#fff;color:#192534;font:inherit;font-size:14px}
+.auth-form input:focus{outline:2px solid #f28a1340;border-color:#f28a13}
+.auth-photo-preview{height:78px;border:1px dashed #cbd5e1;border-radius:11px;display:flex;align-items:center;justify-content:center;color:#8995a4;font-size:12px;overflow:hidden;margin-top:-4px}
+.auth-submit,.auth-secondary{width:100%;margin-top:14px;padding:13px;border-radius:11px;font:inherit;font-weight:800;cursor:pointer}
+.auth-submit{background:#f28a13;color:#fff;border:1px solid #e27e0c}
+.auth-secondary{margin-top:8px;background:#fff7ed;color:#80572f;border:1px solid #ead5bd}
+.auth-message{min-height:20px;color:#c0392b;font-size:12px;line-height:1.7;margin:8px 0 0;text-align:center}
+.auth-note{text-align:center;color:#8995a4;font-size:10px;margin:8px 0 0;line-height:1.7}
+@media(max-height:700px){.auth-gate{align-items:flex-start}.auth-card{margin:5px auto}}
+
+
+/* Requested registration screen refinements: site banner and language selector */
+.auth-card{padding:14px 18px 20px}
+.auth-banner{display:block;width:100%;height:auto;max-height:170px;object-fit:contain;border-radius:13px;margin:0 auto 10px}
+.auth-language{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin:8px 0 13px;color:#31445a;font-size:13px;font-weight:700}
+.auth-language select{padding:8px 12px;border:1px solid #ead5bd;border-radius:9px;background:#fff1df;color:#80572f;font:inherit;min-width:105px}
+.auth-card h1{margin-top:5px}
+.auth-form label{direction:rtl;text-align:right}
+.auth-form label input[name="phone"]{direction:rtl;text-align:right;unicode-bidi:plaintext}
+.auth-form label input[name="phone"]::placeholder{text-align:right;direction:rtl}
+
+
+/* Registration-only additions: banner message, WhatsApp contact and password visibility */
+.auth-banner-wrap{position:relative;width:100%;margin:0 auto 7px}
+.auth-banner-wrap .auth-banner{margin:0;max-height:170px;width:100%;height:auto;display:block}
+.auth-banner-copy{position:absolute;left:5%;top:50%;transform:translateY(-50%);width:42%;text-align:center;color:#152d49;display:flex;flex-direction:column;gap:5px;pointer-events:none}
+.auth-banner-copy strong{font-size:clamp(15px,3.5vw,25px);font-weight:900;white-space:nowrap}
+.auth-banner-copy strong span{color:#e78a12}
+.auth-banner-copy small{font-size:clamp(9px,1.8vw,14px);font-weight:700;white-space:nowrap}
+.auth-contact-row{display:flex;justify-content:flex-end;align-items:center;margin:2px 0 10px}
+.auth-whatsapp{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#20c76a;color:#fff;box-shadow:0 3px 9px #0002;text-decoration:none}
+.auth-whatsapp svg{width:25px;height:25px;display:block}.auth-whatsapp img{width:100%;height:100%;display:block;object-fit:cover;border-radius:50%}
+.password-field{position:relative;display:flex;align-items:center;width:100%;margin-top:6px}
+.auth-form .password-field input{margin-top:0;padding-left:45px}
+.password-eye{position:absolute;left:7px;top:50%;transform:translateY(-50%);width:34px;height:34px;padding:0;border:0;border-radius:8px;background:transparent;color:#64748b;display:grid;place-items:center;cursor:pointer;font-size:18px}
+.password-eye svg{width:21px;height:21px;display:block}.password-eye:focus{outline:2px solid #f28a1366}
+
+
+/* Contact caption and password-recovery support link */
+.auth-contact-row{flex-direction:column;align-items:flex-end;gap:3px}
+.auth-contact-caption{font-size:11px;font-weight:700;color:#16834a;text-align:center;min-width:42px}
+.auth-forgot{display:block;text-align:right;color:#1684d8;font-size:12px;text-decoration:none;margin:2px 0 8px}
+.auth-forgot:hover{text-decoration:underline}
+
+
+/* Registration tools: WhatsApp Business opposite the language selector */
+.auth-tools-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin:2px 0 10px}
+.auth-tools-row .auth-contact-row{flex-direction:column;align-items:center;gap:3px;margin:0}
+.auth-tools-row .auth-language{margin:0;justify-content:flex-end}
+
+
+/* Requested refinements: live phone-length warning and larger banner lettering */
+.auth-banner-copy strong{font-size:clamp(19px,4.4vw,31px)}
+.auth-banner-copy small{font-size:clamp(11px,2.25vw,17px)}
+.phone-length-warning{display:block;margin:5px 2px 0;color:#c0392b;font-size:11px;font-weight:700;line-height:1.6;text-align:right}
+.phone-length-warning[hidden]{display:none}
+
+/* Keep the contact label beside the WhatsApp icon, toward the language selector */
+.auth-tools-row .auth-contact-row{flex-direction:row!important;align-items:center;justify-content:flex-start;gap:7px;margin:0}
+.auth-tools-row .auth-contact-caption{min-width:0;text-align:center;white-space:nowrap}
+.auth-tools-row{align-items:center}
+
+
+/* Added oil-change mileage summary card; isolated styles to preserve existing layout */
+.oil-mileage-card{background:#fff;border:1px solid #e3eaf1;border-radius:16px;padding:14px;margin:12px 0;box-shadow:0 3px 14px #193b5b0a;direction:rtl}
+.oil-mileage-heading{display:flex;align-items:center;gap:8px;color:var(--navy);font-size:15px;font-weight:800;margin-bottom:12px}
+.oil-mileage-heading span{font-size:22px}
+.oil-mileage-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.oil-mileage-fields label{display:block;color:var(--muted);font-size:12px;font-weight:650}
+.oil-mileage-fields input{display:block;width:100%;box-sizing:border-box;margin-top:6px;padding:10px;border:1px solid #d7dfe8;border-radius:10px;background:#fbfcfe;color:var(--navy);font:inherit;font-size:14px;direction:ltr;text-align:center}
+.oil-mileage-fields input:focus{outline:2px solid #f28a1340;border-color:#f28a13}
+.oil-mileage-remaining{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;padding:10px 12px;border-radius:11px;background:#fff5e8;color:#76512c;font-size:13px}
+.oil-mileage-remaining strong{font-size:17px;font-weight:900;color:#d77b0b;direction:ltr;font-variant-numeric:tabular-nums}
+.oil-mileage-remaining strong.due{color:#c0392b}
+[dir=ltr] .oil-mileage-card{direction:ltr}
+@media(max-width:360px){.oil-mileage-fields{grid-template-columns:1fr}}
+
+/* Service mileage checklist */
+.service-checklist{margin:12px 0 18px;padding:14px;border:1px solid #e3eaf1;border-radius:14px;background:#fbfcfe}.service-checklist h3{margin:0 0 12px;color:var(--navy);font-size:17px}.service-mileage-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}.service-checklist label{display:block;color:var(--muted);font-size:12px;font-weight:650}.service-checklist input{width:100%;min-width:0;padding:9px;border:1px solid #d7dfe8;border-radius:9px;background:#fff;font:inherit;text-align:center;direction:ltr}.service-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(115px,.8fr);align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #e8edf2}.service-row:last-child{border-bottom:0}.service-row>span{font-size:13px;font-weight:650;color:var(--navy);line-height:1.5}.service-row label{font-size:11px}.service-row input{margin-top:4px}.service-save-note{font-size:11px;color:var(--muted);margin:10px 0 0}.service-checklist input:focus{outline:2px solid #f28a1340;border-color:var(--orange)}@media(max-width:380px){.service-mileage-fields{grid-template-columns:1fr}.service-row{grid-template-columns:minmax(0,1fr) minmax(105px,.8fr);gap:7px}}
+
+/* Compact expandable service reminders with individual detail pages */
+.service-checklist-home{margin-top:14px;padding-top:12px;border-top:1px solid #e8edf2}
+.service-checklist-head>strong{display:block;color:var(--navy);font-size:14px;margin-bottom:10px}
+.service-checklist-home .service-mileage-fields{margin-bottom:12px}
+.service-home-row{width:100%;display:flex;align-items:center;gap:10px;padding:11px 9px;border:1px solid #e5ebf1;border-radius:11px;background:#fff;text-align:start;color:var(--navy);font:inherit;cursor:pointer}
+.service-home-number{width:27px;height:27px;display:grid;place-items:center;flex:0 0 27px;border-radius:8px;background:#fff0df;color:#a75a08;font-weight:800;font-size:13px}
+.service-home-name{flex:1;font-size:13px;font-weight:750;line-height:1.5}
+.service-home-arrow{font-size:24px;color:var(--orange);line-height:1}
+.service-progress-track{height:9px;background:#edf1f5;border-radius:20px;overflow:hidden;margin:7px 2px 12px}
+.service-progress-fill{display:block;height:100%;border-radius:20px;transition:width .25s ease;background:#16a34a}
+.service-progress-fill.orange{background:#f59e0b}.service-progress-fill.red{background:#dc2626}
+.service-expand-button{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:10px;border:1px solid #ead8c4;border-radius:10px;background:#fff7ed;color:#8a5725;font:inherit;font-size:13px;font-weight:750;cursor:pointer}
+.service-expand-button span{font-size:19px;line-height:1}
+.service-detail-page{padding:4px 0 12px}
+.service-detail-page h3{color:var(--navy);margin:16px 0;font-size:17px}
+.service-back{padding:8px 12px;margin-bottom:8px}
+.service-detail-remaining{display:block;margin-top:14px;color:var(--muted);font-size:13px;font-weight:700}
+.service-detail-remaining input{display:block;width:100%;margin-top:6px;padding:11px;border:1px solid #d7dfe8;border-radius:10px;background:#fff;font:inherit;text-align:center;direction:ltr}
+.service-progress-caption{display:flex;justify-content:space-between;align-items:center;margin-top:18px;color:var(--muted);font-size:13px}
+.service-progress-caption strong{color:var(--navy);font-variant-numeric:tabular-nums}
+.service-progress-track.large{height:14px;margin:9px 0 14px}
+[dir=ltr] .service-home-row{ text-align:left }
+
+/* Service checklist layout matching the supplied compact reference */
+.service-card{padding:18px 0 24px;border-bottom:1px solid #e5e5e5}
+.service-card:last-child{border-bottom:0}
+.service-home-row{width:100%;display:flex;align-items:center;gap:7px;padding:5px 0;border:0;border-radius:0;background:transparent;text-align:right;color:var(--navy);font:inherit;cursor:pointer;direction:rtl}
+.service-home-number{flex:0 0 auto;color:var(--navy);font-size:14px;font-weight:800}
+.service-home-name{flex:1;text-align:right;font-size:14px;font-weight:750;line-height:1.5}
+.service-home-remaining{flex:0 0 auto;direction:ltr;text-align:left;font-size:16px;font-weight:800;color:var(--navy);white-space:nowrap}
+.service-card .service-progress-track{height:16px;margin:12px 0 10px;background:#ededed;border-radius:20px;direction:ltr}
+.service-card .service-progress-fill{height:16px;border-radius:20px}
+.service-card .service-progress-fill.green{background:#159b50}
+.service-card .service-progress-fill.orange{background:#eab308}
+.service-card .service-progress-fill.red{background:#dc2626}
+.service-interval-label{text-align:right;color:var(--muted);font-size:11px;padding-top:2px}
+.service-interval-label strong{color:var(--navy);font-weight:750}
+.service-legend{display:flex;justify-content:center;align-items:center;gap:6px;flex-wrap:wrap;padding:12px 2px 3px;font-size:11px;color:var(--muted)}
+.service-legend .green-dot{color:#159b50}.service-legend .yellow-dot{color:#eab308}.service-legend .red-dot{color:#dc2626}
+.service-expand-button{margin-top:10px}
+
+
+/* Progress bars start at the right edge and extend toward the left */
+.service-progress-track,
+.service-card .service-progress-track {
+  direction: rtl !important;
+  display: block;
+  text-align: right;
+}
+.service-progress-fill,
+.service-card .service-progress-fill {
+  display: block;
+  margin-right: 0 !important;
+  margin-left: auto !important;
+  float: none;
+  transform: none;
+}
+
+
+/* Date/time based notification manager */
+.notification-manager{padding:4px 0 16px}.notification-manager h3{font-size:16px;color:var(--navy);margin:8px 0 14px}.notification-form{display:grid;gap:11px;padding:13px;border:1px solid #e1e7ee;border-radius:13px;background:#f8fafc}.notification-form label{display:grid;gap:5px;font-size:12px;font-weight:700;color:var(--muted)}.notification-form input,.notification-form textarea{width:100%;box-sizing:border-box;padding:10px;border:1px solid #d4dce6;border-radius:9px;background:#fff;color:var(--navy);font:inherit;font-size:14px}.notification-form input[type="datetime-local"]{direction:ltr;text-align:left}.notification-form textarea{resize:vertical}.notification-permission{width:100%;margin-top:11px}.notification-help{font-size:11px;color:var(--muted);line-height:1.7}.scheduled-notice-list{display:grid;gap:8px;margin-top:14px}.scheduled-notice{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:11px;border:1px solid #e5eaf0;border-radius:11px;background:#fff}.scheduled-notice-main{display:grid;gap:4px;min-width:0}.scheduled-notice-main strong{color:var(--navy);font-size:13px;overflow-wrap:anywhere}.scheduled-notice-main small,.scheduled-notice-main p{color:var(--muted);font-size:11px;margin:0}.notice-fired{font-size:11px;color:#b45309;font-weight:700}.notice-delete{border:0;border-radius:8px;padding:6px 9px;background:#fee2e2;color:#b91c1c;font:inherit;font-size:11px;cursor:pointer;flex:0 0 auto}.scheduled-notice-toast{position:fixed;z-index:9999;left:14px;right:14px;bottom:24px;display:grid;gap:6px;padding:15px 42px 15px 15px;border-radius:13px;background:#17324d;color:#fff;box-shadow:0 8px 30px #0004}.scheduled-notice-toast strong{font-size:14px}.scheduled-notice-toast span{font-size:12px;line-height:1.6}.scheduled-notice-toast button{position:absolute;right:10px;top:8px;border:0;background:transparent;color:#fff;font-size:23px;cursor:pointer}
+
+
+/* Header notification bell icon */
+.notification-bell{position:relative;display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;padding:0;border:0;border-radius:50%;background:#fff;color:#000;cursor:pointer;flex:0 0 auto;box-shadow:0 1px 4px rgba(0,0,0,.10)}
+.notification-bell svg{width:23px;height:23px;fill:currentColor;display:block}
+.notification-badge{position:absolute;top:5px;right:5px;width:8px;height:8px;border-radius:50%;background:#e11d48;display:none;border:1px solid #fff}
+
+
+/* Compact Persian (Solar Hijri) date and time picker */
+#jalaliPickerHost{position:relative;z-index:10050}
+.jalali-picker-backdrop{position:fixed;inset:0;z-index:10050;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(15,23,42,.48)}
+.jalali-picker{width:min(100%,360px);padding:17px;border-radius:20px;background:#fff;color:#172033;box-shadow:0 18px 55px #0003;direction:rtl}
+.jalali-picker-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px}
+.jalali-picker-header strong{font-size:16px}
+.jalali-picker-header button{width:36px;height:36px;border:0;border-radius:50%;background:#f1f4f7;color:#172033;font-size:25px;cursor:pointer}
+.jalali-weekdays,.jalali-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;text-align:center}
+.jalali-weekdays{margin-bottom:7px;color:#7b8492;font-size:12px;font-weight:700}
+.jalali-weekdays span{padding:7px 0}
+.jalali-day,.jalali-empty{min-width:0;aspect-ratio:1;border:0;border-radius:11px;background:transparent;color:#263244;font:inherit;font-size:14px;cursor:pointer}
+.jalali-day:hover{background:#fff1df}
+.jalali-day.selected{background:#f28c18;color:#fff;font-weight:800}
+.jalali-time-label{display:grid;gap:7px;margin-top:15px;color:#606b7b;font-size:12px;font-weight:700}
+.jalali-time-label input{width:100%;box-sizing:border-box;padding:11px;border:1px solid #d9e0e8;border-radius:11px;background:#fff;color:#172033;font:inherit;font-size:16px;direction:ltr}
+.jalali-picker footer{display:flex;gap:9px;margin-top:15px}
+.jalali-picker footer button{flex:1;min-height:43px;border:0;border-radius:11px;font:inherit;font-weight:700;cursor:pointer}
+.jalali-cancel{background:#f0f2f5;color:#394454}
+.jalali-confirm{background:#f28c18;color:#fff}
+input[data-jalali-picker]{cursor:pointer;background-color:#fff}
+
+/* Oil-change countdown and one-week status beside the service checklist title */
+.service-heading-row{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;margin-bottom:10px}
+.service-heading-row>strong{flex:1;min-width:0}
+.service-oil-status{display:inline-block;max-width:58%;padding:5px 9px;border-radius:9px;background:#e8f7ec;color:#16833a;font-size:11px;font-weight:800;text-align:center;line-height:1.5;direction:rtl}
+.service-oil-status.urgent{background:#ffebeb;color:#d32626}
+.service-oil-status.safe{background:#e8f7ec;color:#16833a}
+.oil-countdown-panel{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:12px 0;padding:12px;border-radius:12px;background:#f0f7ff;border:1px solid #d7e8fa}
+.oil-countdown-panel span{font-weight:650;color:#23415f}
+.oil-countdown-panel strong{direction:ltr;font-variant-numeric:tabular-nums;color:#12345b;white-space:nowrap}
+@media(max-width:440px){.service-heading-row{align-items:flex-start}.service-oil-status{max-width:55%;font-size:10px}.oil-countdown-panel{align-items:flex-start;flex-direction:column}}
+
+/* Alternating yellow/green warning when less than seven days remain */
+.service-oil-status.blink-warning{animation:oil-warning-blink 1s steps(1,end) infinite}
+@keyframes oil-warning-blink{0%,49%{background:#fff2a8;color:#755500}50%,100%{background:#ffd6d6;color:#b42323}}
+@media(prefers-reduced-motion:reduce){.service-oil-status.blink-warning{animation:none;background:#fff2a8;color:#755500}}
