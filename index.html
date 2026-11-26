@@ -1,115 +1,107 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f28a13"><title>BOST WORKSHOP</title>
-<link rel="manifest" href="manifest.json"><link rel="stylesheet" href="styles.css">
-</head><body>
-<header class="topbar"></header>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f28a13">
+<title>گردونه شانس | بست ورکشاپ</title>
+<style>
+:root{--orange:#f28a13;--navy:#12345b;--muted:#788493;--line:#e3e8ee}
+*{box-sizing:border-box}
+body{margin:0;background:#f4f6fa;color:var(--navy);font-family:Tahoma,Arial,sans-serif;padding:18px 14px 32px}
+main{max-width:720px;margin:auto}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:2px 0 18px}
+.back{display:inline-flex;align-items:center;gap:7px;padding:10px 14px;border:1px solid #ead5bd;border-radius:12px;background:#fff1df;color:#80572f;text-decoration:none;font-weight:700}
+.brand{font-size:13px;color:#8a95a3}
+h1{text-align:center;font-size:clamp(25px,6vw,34px);margin:18px 0 5px}
+.subtitle{text-align:center;color:var(--muted);margin:0 0 20px;line-height:1.8}
+.card{background:#fff;border:1px solid #e6ebf0;border-radius:20px;padding:18px;box-shadow:0 3px 12px #193b5b08;margin-bottom:16px}
+.wheel-wrap{position:relative;width:min(82vw,360px);aspect-ratio:1;margin:8px auto 18px}
+#wheel{display:block;width:100%;height:100%;border-radius:50%;border:7px solid #f5c451;box-shadow:0 7px 22px #172b3a22;transition:transform 5s cubic-bezier(.12,.72,.12,1)}
+.pointer{position:absolute;z-index:2;top:-7px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:18px solid transparent;border-right:18px solid transparent;border-top:39px solid #f5c451;filter:drop-shadow(0 2px 2px #777)}
+.hub{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);width:60px;height:60px;border-radius:50%;border:5px solid #f5c451;background:white;color:#12345b;display:grid;place-items:center;font-weight:900;box-shadow:0 2px 9px #0003}
+button{font:inherit;font-weight:700;border:0;border-radius:12px;padding:12px 16px;cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}
+.primary{background:#16a34a;color:#fff;width:100%;font-size:19px}
+.secondary{background:#fff5e9;color:#80572f;border:1px solid #ead5bd}
+#result{margin-top:15px;padding:15px;text-align:center;border:1px solid #e6ebf0;border-radius:14px;background:#f8fafc;min-height:82px}
+#result strong{display:block;font-size:21px;color:#d97706;margin-top:7px;overflow-wrap:anywhere}
+h2{font-size:18px;margin:0 0 13px}
+#options{display:grid;gap:9px}
+.option{display:flex;gap:8px;align-items:center}
+.dot{width:13px;height:13px;border-radius:50%;flex:none}
+input{min-width:0;width:100%;padding:10px;border:1px solid #d7dfe8;border-radius:9px;background:white;color:#24364b;font:inherit}
+.add-row,.actions{display:flex;gap:8px;margin-top:12px}
+.add-row button{white-space:nowrap}
+.actions button{flex:1}
+.hint{font-size:12px;color:var(--muted);line-height:1.8;margin:12px 0 0}
+@media(min-width:650px){.card{padding:22px}}
+</style>
+</head>
+<body>
 <main>
-<section class="hero"><img src="assets/banner.jpg" class="banner" alt="Best Workshop banner"><div class="hero-brand"><div class="brand-name" id="brandName"><span class="brand-orange">بست</span> <span class="brand-black">ورکشاپ</span></div><h1 id="welcome">موترت را بهتر نگهداری کن</h1></div></section>
-<div class="below-banner"><div class="dropdown-wrap lang"><button class="dropdown-trigger lang-trigger" id="languageTrigger" aria-expanded="false" aria-label="Language">دری <span class="chevron">⌄</span></button><div class="dropdown-pop lang-pop hidden" id="languagePop"><button data-lang="fa">دری</button><button data-lang="ps">پښتو</button><button data-lang="en">English</button></div></div><div class="social-links" aria-label="شبکه‌های اجتماعی">
-<a class="social-icon facebook" href="https://www.facebook.com/profile.php?id=61594178946967" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
-<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.2v2.3H7.7V13h2.7v8z"/></svg>
-</a>
-<a class="social-icon whatsapp" aria-label="WhatsApp" title="WhatsApp">
-<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 2 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 20.5 3.5ZM12 21a9.7 9.7 0 0 1-4.9-1.3l-.4-.2-3.6 1 1-3.5-.2-.4A9.7 9.7 0 1 1 12 21Zm5.3-7.3c-.3-.2-1.7-.9-2-.9s-.5-.2-.7.2-.8.9-1 1.1-.4.2-.7.1a8 8 0 0 1-2.4-1.5 9 9 0 0 1-1.6-2c-.2-.3 0-.5.1-.7l.5-.6.2-.5c.1-.2 0-.4 0-.6l-.9-2.1c-.2-.5-.5-.4-.7-.4h-.6c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.8 1.2 3.2 1.4 3.4a11.3 11.3 0 0 0 4.4 3.9c.6.3 1.1.5 1.5.6.6.2 1.2.2 1.7.1.5-.1 1.7-.7 1.9-1.4s.2-1.3.2-1.4-.2-.3-.5-.5Z"/></svg>
-</a>
-<a class="social-icon youtube" aria-label="YouTube" title="YouTube">
-<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.2 3.6z"/></svg>
-</a>
-<button class="notification-bell" id="notificationBell" type="button" aria-label="اعلان‌ها" title="اعلان‌ها">
-<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a2.25 2.25 0 0 0 2.24-2h-4.48A2.25 2.25 0 0 0 12 22Zm7-6v-5a7 7 0 0 0-5.5-6.84V3a1.5 1.5 0 0 0-3 0v1.16A7 7 0 0 0 5 11v5l-2 2v1h18v-1l-2-2Z"/></svg>
-<span class="notification-badge" aria-hidden="true"></span>
-</button>
-</div><div class="dropdown-wrap account-menu"><button class="dropdown-trigger menu-trigger" id="menuTrigger" aria-expanded="false"><span class="hamburger">☰</span></button><div class="dropdown-pop menu-pop hidden" id="menuPop"><button data-action="home" data-t="home">صفحه اصلی</button><button data-action="services" data-t="services">خدمات ما</button><button data-action="profile" data-t="profile">پروفایل</button><button data-action="register" data-t="addVehicle">ثبت موتر من</button><button data-action="logout" data-t="logout">خروج</button></div></div></div>
-<p class="workshop-address" id="workshopAddress">آدرس: لشکرگاه، منار چوک، بغل استیشن برق</p>
-<section class="banner-info"><p id="subwelcome">سوابق، یادآوری‌ها و خدمات موتر در یک جا</p><div class="date-time"><span id="todayDate"></span><span id="todayWeekday"></span><span class="clock" id="todayTime"></span></div></section>
-
-<section class="profile-card hidden" id="profile"><div class="profile-brand-mark">BOST<br><span>WORKSHOP</span></div><div><h3 data-t="profile">پروفایل</h3><p data-t="profileNote">پروفایل و مشخصات موترهای شما</p></div><button class="close" data-close="profile">×</button></section>
-
-<section class="oil-mileage-card" id="oilMileageCard" aria-label="Vehicle service checklist">
-  <div class="oil-mileage-heading"><span>🔧</span><strong data-t="serviceChecklistTitle">چک‌لیست سرویس موتر</strong></div>
-  <div id="serviceChecklistHome" class="service-checklist-home"></div>
+<div class="top"><a class="back" href="../index.html">→ بازگشت به صفحه اصلی</a><span class="brand">بست ورکشاپ</span></div>
+<h1>🎁 گردونه شانس</h1>
+<p class="subtitle">گزینه‌ها یا جایزه‌های خود را وارد کنید، سپس گردونه را بچرخانید!</p>
+<section class="card">
+<div class="wheel-wrap"><div class="pointer"></div><canvas id="wheel" width="900" height="900" aria-label="گردونه شانس"></canvas><div class="hub">شانس</div></div>
+<button id="spin" class="primary">🎡 چرخاندن گردونه</button>
+<div id="result" aria-live="polite"><span>نتیجه قرعه‌کشی</span><strong id="winner">منتظر شروع هستیم!</strong></div>
 </section>
-<section class="vehicle-summary" id="vehicleSummary"><div class="car-icon">🚘</div><div><strong id="vehicleName">موتر من</strong><small id="vehicleMeta">برای شروع موتر خود را ثبت کنید</small></div><button class="small" id="editVehicle">✎</button></section>
-<section class="grid" id="features">
-<button class="feature" data-panel="warranty"><span>📄</span><b data-t="warranty">خدمات ما</b><small data-t="warrantyDesc">تعمیرات تضمین‌شده</small></button>
-<button class="feature" data-panel="oil"><span>🛢️</span><b data-t="oil">یادآوری مبلن</b><small data-t="oilDesc">زمان سرویس بعدی</small></button>
-<button class="feature" data-panel="expenses"><span>💰</span><b data-t="expenses">مصارف موتر</b><small data-t="expensesDesc">حساب هزینه‌ها</small></button>
-<a class="feature" href="wheel/"><span>🎡</span><b data-t="wheel">گردونه شانس</b><small data-t="wheelDesc">چرخاندن گردونه و انتخاب جایزه</small></a>
-<button class="feature" data-panel="reminders"><span>🔔</span><b data-t="reminders">یادآوری‌ها</b><small data-t="remindersDesc">سرویس و نگهداری</small></button>
-<button class="feature" data-panel="history"><span>🛠️</span><b data-t="history">سوابق تعمیرات</b><small data-t="historyDesc">کارهای انجام‌شده و پرزه‌ها</small></button>
-<button class="feature" data-panel="discounts"><span>🎁</span><b data-t="discounts">تخفیف‌های من</b><small data-t="discountsDesc">پیشنهادهای ویژه</small></button>
-<button class="feature" data-panel="lights"><span>🚦</span><b data-t="lights">چراغ‌های داشبورد</b><small data-t="lightsDesc">معنی چراغ‌های هشدار</small></button>
-<button class="feature" data-panel="resale"><span>📋</span><b data-t="resale">تاریخچه برای فروش</b><small data-t="resaleDesc">گزارش سوابق موتر</small></button>
-<button class="feature" data-panel="estimate"><span>🧾</span><b data-t="estimate">تخمین تعمیر</b><small data-t="estimateDesc">برآورد اولیه قیمت</small></button>
-<button class="feature" data-panel="tires"><span>🛞</span><b data-t="tires">تایر و باد</b><small data-t="tiresDesc">یادآوری بررسی تایر</small></button>
-<a class="feature emergency" href="tel:+93707610026"><span>🆘</span><b data-t="emergency">کمک فوری</b><small data-t="emergencyDesc">تماس با ورکشاپ</small></a>
+<section class="card">
+<h2>⚙️ تنظیم گزینه‌های گردونه</h2>
+<div id="options"></div>
+<div class="add-row"><input id="newOption" maxlength="28" placeholder="نام جایزه یا گزینه جدید"><button id="add" class="secondary">＋ افزودن</button></div>
+<div class="actions"><button id="reset" class="secondary">بازنشانی نمونه</button><button id="clear" class="secondary">حذف همه</button></div>
+<p class="hint">هر گزینه شانس مساوی دارد. برای چرخاندن، حداقل دو گزینه لازم است. حداکثر ۱۶ گزینه می‌توان افزود.</p>
 </section>
-<section class="panel" id="panel"><div class="panel-head"><h2 id="panelTitle">امکانات</h2><button class="close" id="panelClose">×</button></div><div id="panelContent"></div></section>
-<section class="quick-note"><b data-t="trust">اعتماد و شفافیت</b><p data-t="trustText">تمام سوابق تعمیر، هزینه و یادآوری‌ها به شما کمک می‌کند موترتان را بهتر مدیریت کنید.</p></section>
-</main><footer>© BOST WORKSHOP · <span data-t="footer">نگهداری بهتر، سفر مطمئن‌تر</span></footer>
-<div class="modal hidden" id="vehicleModal"><form id="vehicleForm"><h2 data-t="vehicleFormTitle">ثبت موتر</h2><label><span data-t="make">برند و مدل</span><input name="make" required placeholder="Toyota Corolla"></label><label><span data-t="plate">شماره پلیت</span><input name="plate" required></label><label><span data-t="year">سال ساخت</span><input name="year" type="number" min="1980" max="2035"></label><label><span data-t="km">کیلومتر فعلی</span><input name="km" type="number" min="0"></label><div class="actions"><button class="primary" type="submit" data-t="save">ذخیره</button><button type="button" class="outline" id="modalCancel" data-t="cancel">لغو</button></div></form></div>
-
-<div id="authGate" class="auth-gate">
-  <section class="auth-card" aria-labelledby="authTitle">
-    <div class="auth-banner-wrap">
-      <img class="auth-banner" src="assets/banner.jpg" alt="بنر بست ورکشاپ">
-      <div class="auth-banner-copy" aria-label="بست ورکشاپ، موترت را بهتر نگهداری کن">
-        <strong><span>بست</span> ورکشاپ</strong>
-        <small data-auth="welcome">موترت را بهتر نگهداری کن</small>
-      </div>
-    </div>
-    <div class="auth-tools-row">
-      <div class="auth-contact-row">
-        <a class="auth-whatsapp" href="https://wa.me/93704689507" target="_blank" rel="noopener noreferrer" aria-label="تماس با ما از طریق واتساپ" title="تماس با ما در واتساپ"><img src="assets/whatsapp-business.png" alt="WhatsApp Business"></a>
-        <span class="auth-contact-caption" data-auth="contactUs">تماس با ما</span>
-      </div>
-      <div class="auth-language">
-        <label for="authLanguage" id="authLanguageLabel">تغییر زبان</label>
-        <select id="authLanguage" aria-label="تغییر زبان">
-          <option value="fa">دری</option>
-          <option value="ps">پښتو</option>
-          <option value="en">English</option>
-        </select>
-      </div>
-    </div>
-    <h1 id="authTitle">ثبت‌نام کاربر</h1>
-    <p class="auth-intro" id="authIntro">برای ورود به بست ورکشاپ، مشخصات خود را ثبت کنید.</p>
-    <form id="registerForm" class="auth-form">
-      <label><span data-auth="nameLabel">نام شخص</span>
-        <input name="fullName" type="text" maxlength="70" autocomplete="name" placeholder="نام و تخلص" required>
-      </label>
-      <label><span data-auth="phoneLabel">شماره تلفن</span>
-        <input name="phone" type="tel" inputmode="numeric" pattern="[0-9]{10}" minlength="10" maxlength="10" autocomplete="tel" placeholder="شماره تلفن (۱۰ رقم)" required dir="rtl">
-      </label>
-      <label><span data-auth="passwordLabel">رمز ورود (حداقل ۴ رقم)</span>
-        <input name="password" type="password" inputmode="numeric" pattern="[0-9]{4,}" minlength="4" maxlength="32" autocomplete="new-password" placeholder="فقط ارقام، حداقل ۴ رقم" required>
-      </label>
-      <label><span data-auth="confirmPasswordLabel">تکرار رمز ورود</span>
-        <input name="confirmPassword" type="password" inputmode="numeric" pattern="[0-9]{4,}" minlength="4" maxlength="32" autocomplete="new-password" placeholder="رمز ورود را دوباره وارد کنید" required>
-      </label>
-      <label><span data-auth="photoLabel">عکس شخص</span>
-        <input id="registerPhoto" name="photo" type="file" accept="image/*" required>
-      </label>
-      <div class="auth-photo-preview" id="photoPreview">پیش‌نمایش عکس</div>
-      <button class="auth-submit" type="submit" data-auth="registerButton">ثبت‌نام و ورود</button>
-    </form>
-    <form id="loginForm" class="auth-form" hidden>
-      <label><span data-auth="phoneLabel">شماره تلفن</span>
-        <input name="phone" type="tel" inputmode="numeric" pattern="[0-9]{10}" minlength="10" maxlength="10" autocomplete="tel" placeholder="شماره تلفن ثبت‌شده" required dir="rtl">
-      </label>
-      <label><span data-auth="loginPasswordLabel">رمز ورود</span>
-        <input name="password" type="password" inputmode="numeric" pattern="[0-9]{4,}" minlength="4" autocomplete="current-password" placeholder="رمز ورود" required>
-      </label>
-      <a href="https://wa.me/93704689507?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%B1%D9%85%D8%B2%20%D8%B9%D8%A8%D9%88%D8%B1%20%D8%AE%D9%88%D8%AF%20%D8%B1%D8%A7%20%D9%81%D8%B1%D8%A7%D9%85%D9%88%D8%B4%20%DA%A9%D8%B1%D8%AF%D9%87%E2%80%8C%D8%A7%D9%85.%20%D9%84%D8%B7%D9%81%D8%A7%D9%8B%20%D8%B1%D8%A7%D9%87%D9%86%D9%85%D8%A7%DB%8C%DB%8C%20%DA%A9%D9%86%DB%8C%D8%AF." target="_blank" rel="noopener noreferrer" class="auth-forgot" data-auth="forgotPassword">رمز عبور را فراموش کرده‌ام؟</a>
-      <button class="auth-submit" type="submit" data-auth="loginButton">ورود به سایت</button>
-      <button class="auth-secondary" type="button" id="showRegister" data-auth="newRegisterButton">ثبت‌نام کاربر جدید</button>
-    </form>
-    <p id="authMessage" class="auth-message" role="alert"></p>
-    <p class="auth-note" id="authNote">اطلاعات این نسخه در همین مرورگر ذخیره می‌شود.</p>
-  </section>
-</div>
-
-<script src="app.js"></script><script src="auth.js"></script></body></html>
+</main>
+<script>
+(()=>{
+const canvas=document.getElementById('wheel'),ctx=canvas.getContext('2d');
+const colors=['#ef4444','#f59e0b','#22a06b','#3b82f6','#9b59b6','#ec4899','#0d9488','#e87924','#64748b','#ca8a04','#be123c','#0284c7','#65a30d','#9333ea','#db2777','#0f766e'];
+const defaults=['جایزه اول','جایزه دوم','جایزه سوم','جایزه چهارم','یک هدیه','شانس دوباره','جایزه ویژه','متأسفانه هیچ'];
+let items=[...defaults],rotation=0,busy=false;
+const $=id=>document.getElementById(id);
+function draw(){
+ const n=items.length,w=canvas.width,c=w/2,r=w/2-8;ctx.clearRect(0,0,w,w);
+ if(!n){ctx.beginPath();ctx.arc(c,c,r,0,Math.PI*2);ctx.fillStyle='#64748b';ctx.fill();ctx.fillStyle='white';ctx.font='bold 34px Tahoma';ctx.textAlign='center';ctx.fillText('گزینه اضافه کنید',c,c);return}
+ const step=Math.PI*2/n;
+ for(let i=0;i<n;i++){
+  const start=-Math.PI/2+i*step,end=start+step;
+  ctx.beginPath();ctx.moveTo(c,c);ctx.arc(c,c,r,start,end);ctx.closePath();ctx.fillStyle=colors[i%colors.length];ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=5;ctx.stroke();
+  ctx.save();ctx.translate(c,c);ctx.rotate(start+step/2);ctx.textAlign='right';ctx.textBaseline='middle';
+  const size=Math.min(31,Math.max(18,230/n));ctx.font=`bold ${size}px Tahoma, Arial`;ctx.fillStyle='#fff';ctx.shadowColor='#222';ctx.shadowBlur=4;
+  let label=items[i];while(ctx.measureText(label).width>r*.72&&label.length>5)label=label.slice(0,-2)+'…';
+  ctx.fillText(label,r-25,0);ctx.restore();
+ }
+}
+function render(){
+ $('options').innerHTML='';
+ items.forEach((value,i)=>{
+  const row=document.createElement('div');row.className='option';
+  const dot=document.createElement('span');dot.className='dot';dot.style.background=colors[i%colors.length];
+  const input=document.createElement('input');input.value=value;input.maxLength=28;input.setAttribute('aria-label',`گزینه ${i+1}`);
+  input.addEventListener('change',()=>{items[i]=input.value.trim()||value;draw()});
+  const del=document.createElement('button');del.className='secondary';del.textContent='حذف';del.style.padding='9px 11px';del.disabled=busy;
+  del.addEventListener('click',()=>{if(busy)return;items.splice(i,1);render()});
+  row.append(dot,input,del);$('options').append(row);
+ });
+ $('spin').disabled=busy||items.length<2;draw();
+}
+$('add').addEventListener('click',()=>{if(busy)return;const input=$('newOption'),v=input.value.trim();if(!v)return;if(items.length>=16){$('winner').textContent='حداکثر ۱۶ گزینه مجاز است';return}items.push(v);input.value='';render()});
+$('newOption').addEventListener('keydown',e=>{if(e.key==='Enter')$('add').click()});
+$('clear').addEventListener('click',()=>{if(busy)return;items=[];$('winner').textContent='گزینه‌ها را اضافه کنید';render()});
+$('reset').addEventListener('click',()=>{if(busy)return;items=[...defaults];rotation=0;canvas.style.transition='none';canvas.style.transform='rotate(0deg)';$('winner').textContent='منتظر شروع هستیم!';render()});
+$('spin').addEventListener('click',()=>{
+ if(busy||items.length<2)return;busy=true;render();$('winner').textContent='🎯 گردونه در حال چرخش است...';
+ const n=items.length,step=360/n,index=Math.floor(Math.random()*n),current=((rotation%360)+360)%360;
+ const offset=(360-(index*step+step/2)-current+360)%360;rotation+=360*7+offset;
+ canvas.style.transition='transform 5s cubic-bezier(.12,.72,.12,1)';canvas.style.transform=`rotate(${rotation}deg)`;
+ setTimeout(()=>{$('winner').textContent='🎉 برنده شدی: '+items[index]+'!';busy=false;render()},5100);
+});
+render();
+})();
+</script>
+</body>
+</html>
