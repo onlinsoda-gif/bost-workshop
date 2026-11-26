@@ -48,6 +48,16 @@
 <a class="feature emergency" href="tel:+93707610026"><span>🆘</span><b data-t="emergency">کمک فوری</b><small data-t="emergencyDesc">تماس با ورکشاپ</small></a>
 </section>
 <section class="panel" id="panel"><div class="panel-head"><h2 id="panelTitle">امکانات</h2><button class="close" id="panelClose">×</button></div><div id="panelContent"></div></section>
+<section id="adminPanel" class="panel" hidden style="margin:18px auto;max-width:980px">
+  <div class="panel-head"><h2>پنل مدیریت</h2><button class="close" id="adminRefresh" type="button" aria-label="تازه‌سازی">↻</button></div>
+  <p>فهرست کاربران ثبت‌شده و تغییر رمز عبور آن‌ها</p>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0">
+    <input id="adminSearch" type="search" placeholder="جست‌وجوی نام یا شماره تلفن" style="flex:1;min-width:180px;padding:10px">
+    <button id="adminReload" type="button" class="primary">بارگذاری کاربران</button>
+  </div>
+  <div id="adminUsers" aria-live="polite">برای مشاهده کاربران، بارگذاری را بزنید.</div>
+  <p id="adminMessage" role="status"></p>
+</section>
 <section class="quick-note"><b data-t="trust">اعتماد و شفافیت</b><p data-t="trustText">تمام سوابق تعمیر، هزینه و یادآوری‌ها به شما کمک می‌کند موترتان را بهتر مدیریت کنید.</p></section>
 </main><footer>© BOST WORKSHOP · <span data-t="footer">نگهداری بهتر، سفر مطمئن‌تر</span></footer>
 <div class="modal hidden" id="vehicleModal"><form id="vehicleForm"><h2 data-t="vehicleFormTitle">ثبت موتر</h2><label><span data-t="make">برند و مدل</span><input name="make" required placeholder="Toyota Corolla"></label><label><span data-t="plate">شماره پلیت</span><input name="plate" required></label><label><span data-t="year">سال ساخت</span><input name="year" type="number" min="1980" max="2035"></label><label><span data-t="km">کیلومتر فعلی</span><input name="km" type="number" min="0"></label><div class="actions"><button class="primary" type="submit" data-t="save">ذخیره</button><button type="button" class="outline" id="modalCancel" data-t="cancel">لغو</button></div></form></div>
@@ -112,4 +122,4 @@
   </section>
 </div>
 
-<script src="app.js"></script><script src="auth.js"></script></body></html>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="app.js"></script><script src="auth.js"></script></body></html>

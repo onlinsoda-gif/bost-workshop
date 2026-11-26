@@ -40,7 +40,6 @@ function solarDateParts(date){
 }
 function localDigits(value){
  const s=String(value);
- // Date/time numerals: Persian in Persian and Pashto UI; Latin in English UI.
  return lang==='en'?s:s.replace(/[0-9]/g,d=>'۰۱۲۳۴۵۶۷۸۹'[Number(d)]);
 }
 function solarDateFromDate(date,withTime=false){
@@ -119,8 +118,7 @@ function shiftJalaliMonth(year,month,delta){let d=solarInputToDate(`${year}/${mo
 function jalaliMonthLength(year,month){let count=0;for(let day=1;day<=31;day++){const d=solarInputToDate(`${year}/${month}/${day}`);if(!d)break;const p=solarDateParts(d);if(p[0]!==year||p[1]!==month)break;count++;}return count;}
 function jalaliPickerMarkup(){
  const st=jalaliPickerState;if(!st)return '';
- const dateLanguage=lang==='ps'?'fa':lang;
- const monthNames=jalaliMonthNames[dateLanguage]||jalaliMonthNames.fa;
+ const monthNames=jalaliMonthNames[lang]||jalaliMonthNames.fa;
  const first=solarInputToDate(`${st.year}/${st.month}/1`);
  const offset=first?(first.getDay()+1)%7:0;
  const length=jalaliMonthLength(st.year,st.month);
@@ -129,7 +127,7 @@ function jalaliPickerMarkup(){
   const selected=day===st.day?' selected':'';
   cells.push(`<button type="button" class="jalali-day${selected}" data-jalali-day="${day}">${jalaliDigits(day)}</button>`);
  }
- const weekdays=(jalaliWeekdays[dateLanguage]||jalaliWeekdays.fa).map(x=>`<span>${x}</span>`).join('');
+ const weekdays=(jalaliWeekdays[lang]||jalaliWeekdays.fa).map(x=>`<span>${x}</span>`).join('');
  return `<div class="jalali-picker-backdrop" id="jalaliPickerBackdrop"><section class="jalali-picker" role="dialog" aria-modal="true" aria-label="${t('notificationDateTime')}"><header class="jalali-picker-header"><button type="button" data-jalali-action="prev" aria-label="Previous month">‹</button><strong>${monthNames[st.month-1]} ${jalaliDigits(st.year)}</strong><button type="button" data-jalali-action="next" aria-label="Next month">›</button></header><div class="jalali-weekdays">${weekdays}</div><div class="jalali-days">${cells.join('')}</div><label class="jalali-time-label">${t('notificationDateTime')}<input id="jalaliPickerTime" type="time" value="${st.time}"></label><footer><button type="button" class="jalali-cancel" data-jalali-action="cancel">${t('cancel')}</button><button type="button" class="primary jalali-confirm" data-jalali-action="confirm">${t('save')}</button></footer></section></div>`;
 }
 function openJalaliPicker(input){
