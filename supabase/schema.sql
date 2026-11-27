@@ -1,4 +1,6 @@
 -- BOST WORKSHOP Supabase schema
+-- Phone is profile information only (10 local digits); Email/Password is the only sign-in method.
+-- The legacy photo_data_url column is retained if this schema was previously installed, but the app no longer uses it.
 create table if not exists public.profiles (
   id uuid primary key references auth.users(id) on delete cascade,
   phone text unique not null,
@@ -29,17 +31,15 @@ for update to authenticated using (auth.uid() = id) with check (auth.uid() = id 
 create or replace function public.handle_new_user()
 returns trigger language plpgsql security definer set search_path = '' as $$
 begin
-  insert into public.profiles (id, phone, full_name, photo_data_url)
+  insert into public.profiles (id, phone, full_name)
   values (
     new.id,
-    coalesce(new.phone, new.raw_user_meta_data->>'phone'),
-    coalesce(new.raw_user_meta_data->>'full_name', ''),
-    new.raw_user_meta_data->>'photo_data_url'
+    coalesce(new.raw_user_meta_data->>'phone', new.phone),
+    coalesce(new.raw_user_meta_data->>'full_name', '')
   )
   on conflict (id) do update set
     phone = excluded.phone,
     full_name = excluded.full_name,
-    photo_data_url = excluded.photo_data_url,
     updated_at = now();
   return new;
 end;
