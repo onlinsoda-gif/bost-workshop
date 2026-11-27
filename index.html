@@ -104,10 +104,11 @@
         <span class="password-field"><input name="confirmPassword" type="password" minlength="8" maxlength="72" autocomplete="new-password" placeholder="رمز را دوباره وارد کنید" required><button class="password-eye" type="button" aria-label="نمایش رمز عبور" data-password-toggle="password" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button></span>
       </label>
       <button class="auth-submit" type="submit" data-auth="registerButton">ثبت‌نام</button>
+      <button class="auth-secondary" type="button" id="showLogin" data-auth="existingAccountButton">حساب دارید؟ ورود</button>
     </form>
     <form id="loginForm" class="auth-form" hidden>
-      <label><span data-auth="emailLabel">ایمیل</span>
-        <input name="email" type="email" maxlength="254" autocomplete="email" placeholder="ایمیل ثبت‌شده" required dir="ltr">
+      <label><span data-auth="loginIdentifierLabel">شماره موبایل یا ایمیل</span>
+        <input name="identifier" type="text" maxlength="254" autocomplete="username" placeholder="شماره موبایل یا ایمیل" required dir="auto">
       </label>
       <label><span data-auth="loginPasswordLabel">رمز عبور</span>
         <span class="password-field"><input name="password" type="password" minlength="8" maxlength="72" autocomplete="current-password" placeholder="رمز عبور" required><button class="password-eye" type="button" aria-label="نمایش رمز عبور" data-password-toggle="password" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button></span>

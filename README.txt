@@ -58,3 +58,9 @@ FINAL AUTH FORM UPDATE (2026-11-27)
 - All form fields are required. Password visibility eye buttons appear on the LEFT side of each password field.
 - Profile-photo upload has been removed from registration and no photo metadata is sent on signup. The legacy nullable photo_data_url database column is intentionally retained to avoid destructive schema changes.
 - Existing profile and application data are not deleted by these changes.
+
+
+LOGIN UPDATE
+- Added a visible link from registration to the login screen.
+- Login accepts either registered email or the 10-digit phone number.
+- Phone login requires deploying supabase/functions/login-by-phone with the Supabase CLI. See ../README-FIRST.txt.
