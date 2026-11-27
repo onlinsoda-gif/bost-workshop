@@ -98,15 +98,11 @@
         <input name="email" type="email" maxlength="254" autocomplete="email" placeholder="name@example.com" required dir="ltr">
       </label>
       <label><span data-auth="passwordLabel">رمز عبور (حداقل ۸ نویسه)</span>
-        <input name="password" type="password" minlength="8" maxlength="72" autocomplete="new-password" placeholder="حداقل ۸ نویسه" required>
+        <span class="password-field"><input name="password" type="password" minlength="8" maxlength="72" autocomplete="new-password" placeholder="حداقل ۸ نویسه" required><button class="password-eye" type="button" aria-label="نمایش رمز عبور" data-password-toggle="password" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button></span>
       </label>
       <label><span data-auth="confirmPasswordLabel">تکرار رمز عبور</span>
-        <input name="confirmPassword" type="password" minlength="8" maxlength="72" autocomplete="new-password" placeholder="رمز را دوباره وارد کنید" required>
+        <span class="password-field"><input name="confirmPassword" type="password" minlength="8" maxlength="72" autocomplete="new-password" placeholder="رمز را دوباره وارد کنید" required><button class="password-eye" type="button" aria-label="نمایش رمز عبور" data-password-toggle="password" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button></span>
       </label>
-      <label><span data-auth="photoLabel">عکس شخص (اختیاری)</span>
-        <input id="registerPhoto" name="photo" type="file" accept="image/*">
-      </label>
-      <div class="auth-photo-preview" id="photoPreview">پیش‌نمایش عکس</div>
       <button class="auth-submit" type="submit" data-auth="registerButton">ثبت‌نام</button>
     </form>
     <form id="loginForm" class="auth-form" hidden>
@@ -114,7 +110,7 @@
         <input name="email" type="email" maxlength="254" autocomplete="email" placeholder="ایمیل ثبت‌شده" required dir="ltr">
       </label>
       <label><span data-auth="loginPasswordLabel">رمز عبور</span>
-        <input name="password" type="password" minlength="8" maxlength="72" autocomplete="current-password" placeholder="رمز عبور" required>
+        <span class="password-field"><input name="password" type="password" minlength="8" maxlength="72" autocomplete="current-password" placeholder="رمز عبور" required><button class="password-eye" type="button" aria-label="نمایش رمز عبور" data-password-toggle="password" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button></span>
       </label>
       <a href="#" id="forgotPassword" class="auth-forgot" data-auth="forgotPassword">رمز عبور را فراموش کرده‌اید؟</a>
       <button class="auth-submit" type="submit" data-auth="loginButton">ورود به سایت</button>
@@ -129,10 +125,10 @@
     </form>
     <form id="newPasswordForm" class="auth-form" hidden>
       <label><span data-auth="newPasswordLabel">رمز عبور جدید</span>
-        <input name="password" type="password" minlength="8" maxlength="72" autocomplete="new-password" required>
+        <span class="password-field"><input name="password" type="password" minlength="8" maxlength="72" autocomplete="new-password" required><button class="password-eye" type="button" aria-label="نمایش رمز عبور" data-password-toggle="password" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button></span>
       </label>
       <label><span data-auth="confirmPasswordLabel">تکرار رمز عبور</span>
-        <input name="confirmPassword" type="password" minlength="8" maxlength="72" autocomplete="new-password" required>
+        <span class="password-field"><input name="confirmPassword" type="password" minlength="8" maxlength="72" autocomplete="new-password" required><button class="password-eye" type="button" aria-label="نمایش رمز عبور" data-password-toggle="password" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button></span>
       </label>
       <button class="auth-submit" type="submit" data-auth="saveNewPassword">ذخیره رمز جدید</button>
     </form>

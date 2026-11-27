@@ -25,60 +25,36 @@ IMPORTANT LIMITATIONS
 
 SETUP — DO THESE STEPS BEFORE PUBLISHING
 1. In Supabase SQL Editor, run supabase/schema.sql.
-2. In Supabase Dashboard > Authentication > Providers > Phone, enable phone/password
-   sign-in and turn OFF phone confirmation if you want password sign-in without SMS.
-   This means the manager must verify phone ownership separately before approving users.
-3. Check supabase-config.js. It contains the project URL and publishable client key.
+2. In Supabase Dashboard > Authentication > Sign In / Providers > Email:
+   - Keep the Email provider enabled.
+   - Turn OFF Confirm email so users can sign in immediately after registration.
+   - Do NOT enable Phone sign-in; phone is profile data only.
+3. In Authentication > URL Configuration, set the Site URL to the deployed site URL
+   and add that exact URL (plus any required local test URL) to Redirect URLs.
+4. Check supabase-config.js. It contains the project URL and publishable client key.
    A publishable key is intended for browser use; NEVER put service_role/secret keys here.
-4. Deploy the Edge Function using Supabase CLI from this project folder:
+5. Deploy the manager Edge Function if manager password-reset controls are required:
       supabase functions deploy admin-password-reset
-   The platform provides SUPABASE_URL, SUPABASE_ANON_KEY and
-   SUPABASE_SERVICE_ROLE_KEY to the function environment. Never expose the service key.
-5. Create the manager account through the app. In Supabase Dashboard > Authentication
-   > Users, copy that account's UUID. In SQL Editor run:
+   Never expose the service-role key in browser files.
+6. Create the manager account through the app. In Authentication > Users, copy its UUID.
+   In SQL Editor run:
       update public.profiles set role = 'admin' where id = 'PASTE-MANAGER-UUID';
-6. Publish the complete folder to the GitHub Pages/site hosting root. Ensure
-   supabase-config.js is alongside index.html and the Supabase CDN is reachable.
-7. Test with a normal user and manager account. Confirm a normal user cannot see the
-   admin panel or invoke the password-reset function.
-
-SECURITY NOTES
-- Do not commit a Supabase service_role/secret key, database password, or access token.
-- The Edge Function uses the caller's authenticated JWT and checks public.profiles.role.
-- Before production, restrict CORS in supabase/functions/_shared/cors.ts to the exact
-  deployed site origin instead of '*'. Add rate limiting and audit logging for resets.
-- Passwords must be at least 8 characters in this version; choose a strong password.
+7. Publish the complete folder to the hosting root. Ensure supabase-config.js is
+   alongside index.html and the Supabase CDN is reachable.
+8. Test registration, email/password login, email password recovery, 10-digit phone
+   profile storage, and normal-user/admin access.
 
 LOCAL PREVIEW
 Open index.html through a local web server (not file://) after setup. Supabase auth
 requires network access and a configured project.
 
 
-AUTHENTICATION UPDATE
-=====================
-The login and registration flow now uses Supabase email/password authentication.
-Registration fields: full name, Afghanistan phone number, email, password.
-Login fields: email and password.
-Password recovery: Supabase sends a recovery link to the account email. The
-user opens that link and sets a new password on the same site. Profile phone
-number remains stored in public.profiles; profile photo is optional.
-
-SUPABASE DASHBOARD CHECKLIST
-----------------------------
-1. In Authentication > Providers, enable Email. Disable Phone provider if it
-   is no longer needed for sign-in.
-2. In Authentication > URL Configuration, add the deployed site's exact URL
-   (and local development URL if used) to the Redirect URLs allow list.
-3. Configure SMTP / email delivery in Authentication settings for reliable
-   confirmation and password recovery messages.
-4. Run supabase/schema.sql in the Supabase SQL Editor. Existing profiles and
-   vehicle data are not deleted by this change.
-5. For email confirmation, keep it enabled or disabled according to the
-   workshop's policy. If enabled, users must confirm their email before the
-   first sign-in.
-6. Existing phone-only Auth accounts do not automatically gain an email
-   address. Add/verify an email for each existing account in Supabase Auth
-   before expecting email/password login for that account.
-
-Only the password-recovery link has been removed from WhatsApp. The separate
-WhatsApp contact-us shortcut is intentionally preserved.
+FINAL AUTH FORM UPDATE (2026-11-27)
+==================================
+- Registration requires full name, a 10-digit phone number, email, password and password confirmation.
+- Phone input accepts Persian, Arabic and Western numerals, normalizes them to Western digits, warns while fewer than 10 digits are entered, and stores the exact 10-digit value in the profile. Phone is profile information only; it is NOT used for sign-in and no SMS/phone provider is needed.
+- Sign-in uses email + password only. Password recovery is by email only.
+- Email confirmation must be disabled in Supabase Dashboard > Authentication > Sign In / Providers > Email (Confirm email OFF). This is a dashboard setting and cannot be changed by uploading website files. Keep the Email provider enabled.
+- All form fields are required. Password visibility eye buttons appear on the LEFT side of each password field.
+- Profile-photo upload has been removed from registration and no photo metadata is sent on signup. The legacy nullable photo_data_url database column is intentionally retained to avoid destructive schema changes.
+- Existing profile and application data are not deleted by these changes.
