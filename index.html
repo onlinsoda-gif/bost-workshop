@@ -94,28 +94,47 @@
       <label><span data-auth="phoneLabel">شماره تلفن</span>
         <input name="phone" type="tel" inputmode="numeric" pattern="[0-9]{10}" minlength="10" maxlength="10" autocomplete="tel" placeholder="شماره تلفن (۱۰ رقم)" required dir="rtl">
       </label>
-      <label><span data-auth="passwordLabel">رمز ورود (حداقل ۴ رقم)</span>
-        <input name="password" type="password" inputmode="numeric" pattern="[0-9]{4,}" minlength="4" maxlength="32" autocomplete="new-password" placeholder="فقط ارقام، حداقل ۴ رقم" required>
+      <label><span data-auth="emailLabel">ایمیل</span>
+        <input name="email" type="email" maxlength="254" autocomplete="email" placeholder="name@example.com" required dir="ltr">
       </label>
-      <label><span data-auth="confirmPasswordLabel">تکرار رمز ورود</span>
-        <input name="confirmPassword" type="password" inputmode="numeric" pattern="[0-9]{4,}" minlength="4" maxlength="32" autocomplete="new-password" placeholder="رمز ورود را دوباره وارد کنید" required>
+      <label><span data-auth="passwordLabel">رمز عبور (حداقل ۸ نویسه)</span>
+        <input name="password" type="password" minlength="8" maxlength="72" autocomplete="new-password" placeholder="حداقل ۸ نویسه" required>
       </label>
-      <label><span data-auth="photoLabel">عکس شخص</span>
-        <input id="registerPhoto" name="photo" type="file" accept="image/*" required>
+      <label><span data-auth="confirmPasswordLabel">تکرار رمز عبور</span>
+        <input name="confirmPassword" type="password" minlength="8" maxlength="72" autocomplete="new-password" placeholder="رمز را دوباره وارد کنید" required>
+      </label>
+      <label><span data-auth="photoLabel">عکس شخص (اختیاری)</span>
+        <input id="registerPhoto" name="photo" type="file" accept="image/*">
       </label>
       <div class="auth-photo-preview" id="photoPreview">پیش‌نمایش عکس</div>
-      <button class="auth-submit" type="submit" data-auth="registerButton">ثبت‌نام و ورود</button>
+      <button class="auth-submit" type="submit" data-auth="registerButton">ثبت‌نام</button>
     </form>
     <form id="loginForm" class="auth-form" hidden>
-      <label><span data-auth="phoneLabel">شماره تلفن</span>
-        <input name="phone" type="tel" inputmode="numeric" pattern="[0-9]{10}" minlength="10" maxlength="10" autocomplete="tel" placeholder="شماره تلفن ثبت‌شده" required dir="rtl">
+      <label><span data-auth="emailLabel">ایمیل</span>
+        <input name="email" type="email" maxlength="254" autocomplete="email" placeholder="ایمیل ثبت‌شده" required dir="ltr">
       </label>
-      <label><span data-auth="loginPasswordLabel">رمز ورود</span>
-        <input name="password" type="password" inputmode="numeric" pattern="[0-9]{4,}" minlength="4" autocomplete="current-password" placeholder="رمز ورود" required>
+      <label><span data-auth="loginPasswordLabel">رمز عبور</span>
+        <input name="password" type="password" minlength="8" maxlength="72" autocomplete="current-password" placeholder="رمز عبور" required>
       </label>
-      <a href="https://wa.me/93704689507?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%B1%D9%85%D8%B2%20%D8%B9%D8%A8%D9%88%D8%B1%20%D8%AE%D9%88%D8%AF%20%D8%B1%D8%A7%20%D9%81%D8%B1%D8%A7%D9%85%D9%88%D8%B4%20%DA%A9%D8%B1%D8%AF%D9%87%E2%80%8C%D8%A7%D9%85.%20%D9%84%D8%B7%D9%81%D8%A7%D9%8B%20%D8%B1%D8%A7%D9%87%D9%86%D9%85%D8%A7%DB%8C%DB%8C%20%DA%A9%D9%86%DB%8C%D8%AF." target="_blank" rel="noopener noreferrer" class="auth-forgot" data-auth="forgotPassword">رمز عبور را فراموش کرده‌ام؟</a>
+      <a href="#" id="forgotPassword" class="auth-forgot" data-auth="forgotPassword">رمز عبور را فراموش کرده‌اید؟</a>
       <button class="auth-submit" type="submit" data-auth="loginButton">ورود به سایت</button>
       <button class="auth-secondary" type="button" id="showRegister" data-auth="newRegisterButton">ثبت‌نام کاربر جدید</button>
+    </form>
+    <form id="recoveryForm" class="auth-form" hidden>
+      <label><span data-auth="emailLabel">ایمیل</span>
+        <input name="email" type="email" autocomplete="email" placeholder="ایمیل حساب شما" required dir="ltr">
+      </label>
+      <button class="auth-submit" type="submit" data-auth="sendResetButton">ارسال لینک بازیابی</button>
+      <button class="auth-secondary" type="button" id="backToLogin" data-auth="backToLogin">بازگشت به ورود</button>
+    </form>
+    <form id="newPasswordForm" class="auth-form" hidden>
+      <label><span data-auth="newPasswordLabel">رمز عبور جدید</span>
+        <input name="password" type="password" minlength="8" maxlength="72" autocomplete="new-password" required>
+      </label>
+      <label><span data-auth="confirmPasswordLabel">تکرار رمز عبور</span>
+        <input name="confirmPassword" type="password" minlength="8" maxlength="72" autocomplete="new-password" required>
+      </label>
+      <button class="auth-submit" type="submit" data-auth="saveNewPassword">ذخیره رمز جدید</button>
     </form>
     <p id="authMessage" class="auth-message" role="alert"></p>
     <p class="auth-note" id="authNote">اطلاعات این نسخه در همین مرورگر ذخیره می‌شود.</p>

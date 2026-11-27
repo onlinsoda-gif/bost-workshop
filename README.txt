@@ -52,3 +52,33 @@ SECURITY NOTES
 LOCAL PREVIEW
 Open index.html through a local web server (not file://) after setup. Supabase auth
 requires network access and a configured project.
+
+
+AUTHENTICATION UPDATE
+=====================
+The login and registration flow now uses Supabase email/password authentication.
+Registration fields: full name, Afghanistan phone number, email, password.
+Login fields: email and password.
+Password recovery: Supabase sends a recovery link to the account email. The
+user opens that link and sets a new password on the same site. Profile phone
+number remains stored in public.profiles; profile photo is optional.
+
+SUPABASE DASHBOARD CHECKLIST
+----------------------------
+1. In Authentication > Providers, enable Email. Disable Phone provider if it
+   is no longer needed for sign-in.
+2. In Authentication > URL Configuration, add the deployed site's exact URL
+   (and local development URL if used) to the Redirect URLs allow list.
+3. Configure SMTP / email delivery in Authentication settings for reliable
+   confirmation and password recovery messages.
+4. Run supabase/schema.sql in the Supabase SQL Editor. Existing profiles and
+   vehicle data are not deleted by this change.
+5. For email confirmation, keep it enabled or disabled according to the
+   workshop's policy. If enabled, users must confirm their email before the
+   first sign-in.
+6. Existing phone-only Auth accounts do not automatically gain an email
+   address. Add/verify an email for each existing account in Supabase Auth
+   before expecting email/password login for that account.
+
+Only the password-recovery link has been removed from WhatsApp. The separate
+WhatsApp contact-us shortcut is intentionally preserved.
